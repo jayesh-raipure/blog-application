@@ -26,10 +26,12 @@
                         <% end %>
                       </small>
                     </h3>
-                    <h4 class="pull-left">
-                      <small><em>Created: <%= time_ago_in_words @post.created_at %> Ago</small>
-                    </h4>
+                    
                   </div>
+                  <br>
+                  <h4 class="pull-left">
+                      <small><em>Created: <%= time_ago_in_words @post.created_at %> Ago</em></small>
+                  </h4>
                   <!-- <div class="col-sm-3 col-md-3 col-lg-3">
                     <h4 class="pull-right">
                       <small><em>Created: <%= time_ago_in_words @post.created_at %> Ago</small>
@@ -43,7 +45,17 @@
               <%= @post.content %>
             </div>
           </div>
-        
+          <!-- comment Section -->
+          <div class="col-md-8 col-sm-8 col-lg-8">
+            <div class="pull-left">
+              <%= @post.comments.count %> Comments
+            </div>
+            <hr>
+            <%= render @post.comments %>
+            
+            <%= render "comments/form" %>
+          </div>
+          <!-- comment Section End -->
         <!-- Panel End -->
         </div>
       </div>
