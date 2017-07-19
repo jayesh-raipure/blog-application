@@ -1,11 +1,11 @@
 <%= form_for(@post) do |f| %>
   <div class="col-md-6">
     <% if @post.errors.any? %>
-      <% @post.errors.full_messages.each do |message| %>
-        <div class="alert alert-danger">
-          <%= message %>
-        </div>
-      <% end %>
+      <div class="alert alert-danger">
+        <% @post.errors.full_messages.each do |message| %>
+          <%= message %> <br/>
+        <% end %>
+      </div>
     <% end %>
     <div class="form-group">
       <%= f.label :title, 'Title:' %>
@@ -13,9 +13,9 @@
     </div>
     <div class="form-group">
       <%= f.label :blog_content, 'Blog Content' %>
-      <%= f.text_area :content, class: "form-control" %>
+      <%= f.text_area :content, rows: 6, class: "form-control" %>
     </div>
-    <%= hidden_field(:post, :author_id, value: "1") %>
+    <%= hidden_field(:post, :author_id, value: session[:user_id]) %>
     <%= f.submit "Submit", class: "btn btn-default"  %>
   </div>
 <% end %>

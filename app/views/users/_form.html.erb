@@ -1,0 +1,44 @@
+<%= form_for(@user) do |f| %>
+  <div class="col-md-4">
+    <% if @user.errors.any? %>
+      <div class="alert alert-danger">
+        <% @user.errors.full_messages.each do |message| %>
+          <%= message %> <br/>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="form-group">
+      <%= f.label :firstname, 'First Name' %>
+      <%= f.text_field :firstname, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :lastname, 'Last Name' %>
+      <%= f.text_field :lastname, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :emailid, 'Email Id' %>
+      <%= f.text_field :emailid, class: "form-control" %>
+    </div>
+
+    <!-- visible only in case of update user -->
+    <% if params[:action] == 'edit' || params[:action] == 'update' %>
+      <div class="form-group">
+        <%= f.label :current_password, 'Current Password' %>
+        <%= f.password_field :current_password, class: "form-control" %>
+      </div>
+    <% end %>
+    <div class="form-group">
+      <%= f.label :password, 'Password' %>
+      <%= f.password_field :password, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password_confirmation, 'Confirm Password' %>
+      <%= f.password_field :password_confirmation, class: "form-control" %>
+    </div>
+    <% params[:action] == 'edit' || params[:action] == 'update' ? btn = "Update" : btn = "Sign Up" %>
+    <%= f.submit btn, class: "btn btn-default"  %>
+  </div>
+<% end %>

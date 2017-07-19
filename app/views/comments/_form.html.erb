@@ -5,7 +5,7 @@
       <%= f.label :body, 'Body' %>
       <%= f.text_area :body, class: "form-control" %>
     </div>
-    <%= hidden_field(:comment, :user_id, value: "1") %>
+    <%= hidden_field(:comment, :user_id, value: session[:user_id]) %>
     <%= f.submit "Comment", class: "btn btn-default"  %>
   </div>
 <% end %>

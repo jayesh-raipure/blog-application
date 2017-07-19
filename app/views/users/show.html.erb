@@ -1,0 +1,25 @@
+<% if flash['notice'] %>
+  <div class="alert alert-success">
+    <%= flash['notice'] %>
+  </div>
+<% end %>
+
+<p>
+  <strong>Firstname:</strong>
+  <%= @user.firstname %>
+</p>
+
+<p>
+  <strong>Lastname:</strong>
+  <%= @user.lastname %>
+</p>
+
+<p>
+  <strong>Emailid:</strong>
+  <%= @user.emailid %>
+</p>
+
+<%= link_to edit_user_path(@user), title: "Edit", class: "btn btn-info btn-sm" do %>
+Edit Profile
+  <span class="glyphicon glyphicon-edit"></span>
+<% end %>

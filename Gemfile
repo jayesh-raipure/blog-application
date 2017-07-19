@@ -47,3 +47,11 @@ end
 
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'autoprefixer-rails', '~> 7.1', '>= 7.1.2.2'
+gem 'bootstrap-social-rails'
+gem 'font-awesome-rails'
+
+gem 'bcrypt', '~> 3.1', '>= 3.1.5'
+
+gem 'omniauth-facebook'
+gem 'omniauth-github'
+gem 'omniauth-google-oauth2'

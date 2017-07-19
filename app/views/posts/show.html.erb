@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-7 col-lg-7 col-sm-7">
         <% if flash['notice'] %>
-            <div class="alert alert-success">
+            <div class="alert <%= flash['class'] %>">
               <%= flash['notice'] %>
             </div>
         <% end %>
@@ -15,16 +15,18 @@
                 <div class="row">
                   <div class="col-sm-6 col-md-6 col-lg-6">
                     <h3 class="pull-left"><%= @post.title %>
-                      <small>
-                        <%= link_to edit_post_url(@post), title: "Edit" do %>
-                          <span class="glyphicon glyphicon-edit"></span>
-                        <% end %>
-                      </small>
-                      <small>
-                        <%= link_to @post, data: { confirm: 'Are you sure?' }, method: :delete, title: "Delete" do %>
-                          <span class="glyphicon glyphicon-trash"></span>
-                        <% end %>
-                      </small>
+                      <% if @post.author_id == session[:user_id] %>
+                        <small>
+                          <%= link_to edit_post_url(@post), title: "Edit" do %>
+                            <span class="glyphicon glyphicon-edit"></span>
+                          <% end %>
+                        </small>
+                        <small>
+                          <%= link_to @post, data: { confirm: 'Are you sure?' }, method: :delete, title: "Delete" do %>
+                            <span class="glyphicon glyphicon-trash"></span>
+                          <% end %>
+                        </small>
+                      <% end %>
                     </h3>
                     
                   </div>
@@ -52,7 +54,7 @@
             </div>
             <hr>
             <%= render @post.comments %>
-            
+
             <%= render "comments/form" %>
           </div>
           <!-- comment Section End -->

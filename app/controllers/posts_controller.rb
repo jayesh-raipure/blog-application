@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  skip_before_filter :authorize, only: [:index, :show, :create]
+
   def index
     @posts = Post.all.order("created_at DESC")
   end
@@ -19,7 +21,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: "Blog Updated Successfully." }
+        format.html { redirect_to @post, flash: { notice: "Blog Updated Successfully.", class: "alert-success"} }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :edit }
@@ -33,7 +35,7 @@ class PostsController < ApplicationController
     
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post,  notice: "Blog Created Successfully." }
+        format.html { redirect_to @post,  flash: { notice: "Blog Created Successfully.", class: "alert-success" } }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }

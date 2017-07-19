@@ -1,6 +1,6 @@
 <div class="col-md-11 col-sm-11 col-lg-11">
   <div class="pull-left">
-    <p>User Name</p>
+    <p><%= "#{comment.user.firstname} #{comment.user.lastname}" %></p>
     <p><%= time_ago_in_words comment.created_at %> Ago</p>
     <p><%= comment.body %></p>
   </div>
