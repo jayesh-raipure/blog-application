@@ -2,11 +2,12 @@ class PostsController < ApplicationController
   skip_before_filter :authorize, only: [:index, :show, :create]
 
   def index
-    @posts = Post.all.order("created_at DESC")
+    @posts = Post.order("created_at DESC")
   end
 
   def show
   	@post = Post.find(params[:id])
+    @user = User.find(@post.author_id)
   end
 
   def new
