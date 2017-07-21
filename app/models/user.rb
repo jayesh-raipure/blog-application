@@ -12,9 +12,9 @@ class User < ActiveRecord::Base
 
   def self.create_user_from_omniauth(auth)
     create(
-        firstname: auth['info']['first_name'],
-        lastname: auth['info']['last_name'],
-        emailid: auth['info']['email'],
+      firstname: auth['info']['first_name'],
+      lastname: auth['info']['last_name'],
+      emailid: auth['info']['email'],
     )
   end
 end

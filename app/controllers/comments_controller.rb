@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  skip_before_filter :authorize
+  skip_before_filter :authenticate
   
   def create 
     @post = Post.find(params[:post_id])
