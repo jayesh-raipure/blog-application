@@ -5,7 +5,11 @@
       <%= f.label :body, 'Body' %>
       <%= f.text_area :body, class: "form-control" %>
     </div>
-    <%= hidden_field(:comment, :user_id, value: session[:user_id]) %>
-    <%= f.submit "Comment", class: "btn btn-default"  %>
+    <% if user_signed_in? && @post.author_id == current_user.id %>
+      <%= hidden_field(:comment, :user_id, value: current_user.id) %>
+      <%= f.submit "Comment", class: "btn btn-default"  %>
+    <% else %>
+      <p> You must login to comment. </p>
+    <% end %>
   </div>
 <% end %>

@@ -55,3 +55,5 @@ gem 'bcrypt', '~> 3.1', '>= 3.1.5'
 gem 'omniauth-facebook'
 gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
+
+gem 'devise'

@@ -16,10 +16,10 @@
 
 <p>
   <strong>Emailid:</strong>
-  <%= @user.emailid %>
+  <%= @user.email %>
 </p>
 
-<%= link_to edit_user_path(@user), title: "Edit", class: "btn btn-info btn-sm" do %>
+<%= link_to edit_user_registration_path, title: "Edit", class: "btn btn-info btn-sm" do %>
 Edit Profile
   <span class="glyphicon glyphicon-edit"></span>
 <% end %>

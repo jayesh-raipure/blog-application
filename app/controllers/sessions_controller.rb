@@ -1,10 +1,10 @@
 class SessionsController < ApplicationController
-  skip_before_filter :authenticate
+  skip_before_filter :authenticate_user!
   def new
   end
 
   def create
-    user = User.find_by_emailid(params[:emailid])
+    user = User.find_by_email(params[:email])
     if user and user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect_to posts_url
@@ -28,6 +28,5 @@ class SessionsController < ApplicationController
     session[:user_id] = user.id
     redirect_to posts_url
   end
-
-
+  
 end

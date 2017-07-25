@@ -1,0 +1,26 @@
+<div class="container">
+   <div class="row">
+    <h2>Forgot your password?</h2>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <div class="col-md-6">
+        <% if @user.errors.any? %>
+          <div class="alert alert-danger">
+            <% @user.errors.full_messages.each do |message| %>
+              <%= message %> <br/> <!---  before this devise_error_messages! this mathod was used here. -->
+            <% end %>
+          </div>
+        <% end %>
+        <div class="form-group">
+		  <%= f.label :email %><br />
+		  <%= f.email_field :email, autofocus: true,class: "form-control" %>
+		</div>
+		<div class="form-group">
+		  <%= f.submit "Send me reset password instructions", class: "btn btn-default" %>
+		</div>
+     </div>
+    <% end %>
+    <div class="col-md-7"> 
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>

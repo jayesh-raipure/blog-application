@@ -15,27 +15,27 @@
       </div>
       <ul class="nav navbar-nav">
         <li><%= link_to "Home", posts_url %></li>
-        <% if session[:user_id] %> <li><%= link_to "Profile", user_path(session[:user_id]) %></li> <% end %>
+        <% if user_signed_in?  %> <li><%= link_to "Profile", user_path(current_user.id) %></li> <% end %>
         <li><%= link_to "About", posts_url%></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <% unless session[:user_id]  %>
+        <% unless user_signed_in?  %>
         	<li>
-        	  <%= link_to new_user_url do %>
+        	  <%= link_to new_user_registration_url do %>
             	Sign Up
               <span class="glyphicon glyphicon-user"></span>
             <% end %>
   		    </li>
         	<li>
-        	  <%= link_to login_path do %>
+        	  <%= link_to new_user_session_url do %>
             	Login
               <span class="glyphicon glyphicon-log-in"></span>
             <% end %>
   		    </li>
         <% else %>
           <li>
-            <%= link_to logout_path, method: :delete do %>
+            <%= link_to destroy_user_session_url, method: :delete do %>
               Logout
               <span class="glyphicon glyphicon-log-out"></span>
             <% end %>
@@ -49,7 +49,7 @@
   <div class="container-fluid text-center">    
     <div class="row content">
       <div class="col-md-2 col-sm-2 col-lg-2 sidenav">
-        <% if session[:user_id]  %>
+        <% if user_signed_in?   %>
           <p><%= link_to "Add Blog", new_post_url %></p>
         <% end %>
         <p><%= link_to "All Blog", posts_url %></p>
