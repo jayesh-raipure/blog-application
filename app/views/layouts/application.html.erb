@@ -21,18 +21,18 @@
 
       <ul class="nav navbar-nav navbar-right">
         <% unless user_signed_in?  %>
-        	<li>
-        	  <%= link_to new_user_registration_url do %>
-            	Sign Up
+          <li>
+            <%= link_to new_user_registration_url do %>
+              Sign Up
               <span class="glyphicon glyphicon-user"></span>
             <% end %>
-  		    </li>
-        	<li>
-        	  <%= link_to new_user_session_url do %>
-            	Login
+          </li>
+          <li>
+            <%= link_to new_user_session_url do %>
+              Login
               <span class="glyphicon glyphicon-log-in"></span>
             <% end %>
-  		    </li>
+          </li>
         <% else %>
           <li>
             <%= link_to destroy_user_session_url, method: :delete do %>
