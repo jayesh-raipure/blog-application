@@ -15,18 +15,19 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    session[:omniauth] = nil
-    redirect_to login_url, notice: "Logged out"
+    session[:uid] = nil
+    session[:id] = nil
+    redirect_to new_user_session_url, notice: "Logged out"
   end
 
   def omniauthLogin
     auth = request.env["omniauth.auth"]
-    logger.debug "#{auth.inspect}"
-    session[:omniauth] = auth.except('extra')
-    user = User.sign_in_from_omniauth(auth)
-
-    session[:user_id] = user.id
-    redirect_to posts_url
+    # session[:omniauth] = auth.except('extra')
+    @user = SocialLogin.from_omniauth(auth)
+    # sign_in_and_redirect @user
+    session[:uid] = @user.uid
+    session[:id] = @user.id
+    redirect_to request.env['omniauth.origin']
   end
   
 end

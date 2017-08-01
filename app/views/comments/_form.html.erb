@@ -1,15 +1,66 @@
 <%= form_for([@post, @post.comments.build]) do |f| %>
-  <div class="col-md-6 col-sm-6 col-lg-6">
+  <div class="col-md-12 col-sm-12 col-lg-12">
   <h3>Add Comments</h3>
     <div class="form-group">
       <%= f.label :body, 'Body' %>
       <%= f.text_area :body, class: "form-control" %>
     </div>
-    <% if user_signed_in? && @post.author_id == current_user.id %>
-      <%= hidden_field(:comment, :user_id, value: current_user.id) %>
+    <% if user_signed_in? || session[:uid] %>
+      <%= hidden_field(:comment, :author_id, value: session[:id] ? session[:id] : current_user.id) %>
+      <%= hidden_field(:comment, :author_type, value: session[:id] ? "SocialLogin" : "User") %>
       <%= f.submit "Comment", class: "btn btn-default"  %>
     <% else %>
-      <p> You must login to comment. </p>
+      <!-- Trigger the modal with a button -->
+      <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">Comment</button>
     <% end %>
   </div>
 <% end %>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Sign Up or Login</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12">
+          
+            <div class="col-md-3">
+              <%= link_to "/auth/facebook", class: "btn  btn-social btn-facebook" do %>
+                Sign up with Fb
+                <span class="fa fa-facebook""></span>
+              <% end %>
+            </div>
+
+            <div class="col-md-3">
+              <%= link_to "/auth/google_oauth2", class: "btn  btn-social btn-google" do %>
+                Sign up with Gmail
+                <span class="fa fa-google"></span>
+              <% end %>
+            </div>
+
+            <div class="col-md-3">
+              <%= link_to "/auth/github", class: "btn  btn-social btn-github" do %>
+                Sign up with Github
+                <span class="fa fa-github"></span>
+              <% end %>
+            </div>
+
+            <div class="col-md-3">
+              <%= link_to new_user_registration_url, class: "btn  btn-social btn-primary btn-block" do %>
+                Sign up with Emailid
+                <span class="glyphicon glyphicon-user"></span>
+              <% end %>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

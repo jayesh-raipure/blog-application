@@ -20,7 +20,7 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <% unless user_signed_in?  %>
+        <% unless user_signed_in? || session[:uid]  %>
           <li>
             <%= link_to new_user_registration_url do %>
               Sign Up
@@ -35,7 +35,7 @@
           </li>
         <% else %>
           <li>
-            <%= link_to destroy_user_session_url, method: :delete do %>
+            <%= link_to session[:uid] ? logout_path : destroy_user_session_url, method: :delete do %>
               Logout
               <span class="glyphicon glyphicon-log-out"></span>
             <% end %>
@@ -57,14 +57,6 @@
       <div class="col-md-10 col-sm-10 col-lg-10 text-left"> 
         <%= yield %>
       </div>
-     <!--  <div class="col-md-2 col-sm-2 col-lg-2 sidenav">
-        <div class="well">
-          <p>ADS</p>
-        </div>
-        <div class="well">
-          <p>ADS</p>
-        </div>
-      </div> -->
     </div>
   </div>
   <!-- sidebar adn page content end https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_temp_webpage&stacked=h -->
