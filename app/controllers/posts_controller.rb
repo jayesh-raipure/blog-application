@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   skip_before_filter :authenticate_user!, only: [:index, :show, :create]
-  before_action :check_auther, only:[:edit, :update, :destroy]
+  before_action :check_author, only:[:edit, :update, :destroy]
   def index
     @posts = Post.order("created_at DESC")
   end
@@ -58,12 +58,10 @@ class PostsController < ApplicationController
       params.require(:post).permit(:title, :content, :author_id)
     end
 
-    def check_auther
+    def check_author
       @post = Post.find(params[:id])
       unless @post.author_id == current_user.id
-        flash[:notice] = 'Access denied as you are not author of this Post'
-        flash[:class]  = 'alert-danger'
-        redirect_to post_path(params[:id])
+        redirect_to post_path(params[:id]), flash: { notice: "Access denied as you are not author of this Post", class: "alert-danger" }
       end
     end
 end
