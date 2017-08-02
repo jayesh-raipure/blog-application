@@ -6,8 +6,8 @@
       <%= f.text_area :body, class: "form-control" %>
     </div>
     <% if user_signed_in? || session[:uid] %>
-      <%= hidden_field(:comment, :author_id, value: session[:id] ? session[:id] : current_user.id) %>
-      <%= hidden_field(:comment, :author_type, value: session[:id] ? "SocialLogin" : "User") %>
+      <%= hidden_field(:comment, :author_id, value: (session[:id] ? session[:id] : current_user.id)) %>
+      <%= hidden_field(:comment, :author_type, value: (session[:id] ? "SocialLogin" : "User")) %>
       <%= f.submit "Comment", class: "btn btn-default"  %>
     <% else %>
       <!-- Trigger the modal with a button -->
@@ -29,7 +29,6 @@
       <div class="modal-body">
         <div class="row">
           <div class="col-md-12">
-          
             <div class="col-md-3">
               <%= link_to "/auth/facebook", class: "btn  btn-social btn-facebook" do %>
                 Sign up with Fb
@@ -57,7 +56,6 @@
                 <span class="glyphicon glyphicon-user"></span>
               <% end %>
             </div>
-
           </div>
         </div>
       </div>
