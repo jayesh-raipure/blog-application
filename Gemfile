@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby "2.4.0"
+ruby '2.4.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.8'
@@ -57,11 +57,12 @@ gem 'omniauth-google-oauth2'
 
 gem 'devise'
 
-gem "letter_opener", :group => :development
+# gem 'letter_opener', :group => :development
 
 group :development do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  gem 'letter_opener'
 end
 
 group :production do
