@@ -50,8 +50,10 @@
       <div class="col-md-2 col-sm-2 col-lg-2 sidenav">
         <% if user_signed_in?   %>
           <p><%= link_to "Add Blog", new_post_url %></p>
+          <p><%= link_to "My Blog", myposts_posts_url %></p>
+        <% else %>
+          <p><%= link_to "All Blog", posts_url %></p>
         <% end %>
-        <p><%= link_to "All Blog", posts_url %></p>
       </div>
       <div class="col-md-10 col-sm-10 col-lg-10 text-left"> 
         <%= yield %>

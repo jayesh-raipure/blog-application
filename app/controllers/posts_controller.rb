@@ -52,6 +52,11 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def myposts
+    @posts = current_user.posts
+    render "posts/index"
+  end
 
   private
     def post_params
