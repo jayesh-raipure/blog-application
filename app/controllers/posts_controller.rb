@@ -55,7 +55,7 @@ class PostsController < ApplicationController
   
   def myposts
     @posts = current_user.posts
-    render "posts/index"
+    render :index
   end
 
   private

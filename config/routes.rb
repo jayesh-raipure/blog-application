@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   resources :users
   resources :posts do
     resources :comments
-    get 'myposts', on: :collection, as: :myposts
+    collection do
+      get 'myposts', as: :myposts
+    end
   end
 
   controller :sessions do
