@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
     # sign_in_and_redirect @user
     session[:uid] = @user.uid
     session[:id] = @user.id
-    redirect_to request.env['omniauth.origin']
+    redirect_to ((request.env['omniauth.origin'] != new_user_session_url) ? request.env['omniauth.origin'] : posts_url)
   end
   
 end

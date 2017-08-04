@@ -1,7 +1,12 @@
 <div class="col-md-11 col-sm-11 col-lg-11">
+  <div class="pull-right">
+    <%= time_ago_in_words comment.created_at %> Ago
+  </div>
   <div class="pull-left">
-    <p><%= "#{comment.author.firstname} #{comment.author.lastname}" %></p>
-    <p><%= time_ago_in_words comment.created_at %> Ago</p>
+    <%= "#{comment.author.firstname} #{comment.author.lastname}" %>
+  </div>
+  <br>
+  <div style="margin-top: 10px;">
     <p><%= comment.body %></p>
   </div>
 </div>

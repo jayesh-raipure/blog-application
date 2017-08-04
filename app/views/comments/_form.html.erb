@@ -2,8 +2,7 @@
   <div class="col-md-12 col-sm-12 col-lg-12">
   <h3>Add Comments</h3>
     <div class="form-group">
-      <%= f.label :body, 'Body' %>
-      <%= f.text_area :body, class: "form-control" %>
+      <%= f.text_area :body, class: "form-control", placeholder: "Write your comment here...." %>
     </div>
     <% if user_signed_in? || session[:uid] %>
       <%= hidden_field(:comment, :author_id, value: (session[:id] ? session[:id] : current_user.id)) %>
