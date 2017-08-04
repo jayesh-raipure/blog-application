@@ -16,7 +16,6 @@
       <ul class="nav navbar-nav">
         <li><%= link_to "Home", posts_url %></li>
         <% if user_signed_in?  %> <li><%= link_to "Profile", user_path(current_user.id) %></li> <% end %>
-        <!-- <li><%= link_to "About", posts_url%></li> -->
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
