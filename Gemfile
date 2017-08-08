@@ -59,10 +59,11 @@ gem 'devise'
 
 # gem 'letter_opener', :group => :development
 
-group :development do
+group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
   gem 'letter_opener'
+  gem 'rspec-rails', '~> 3.6'
 end
 
 group :production do
