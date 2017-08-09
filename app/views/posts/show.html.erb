@@ -43,7 +43,7 @@
       <!-- comment Section -->
       <div class="col-md-8 col-sm-8 col-lg-8">
         <div class="pull-left">
-          <%= @post.comments.count %> Comments
+          <%= pluralize @post.comments.count, 'comment' %> 
         </div>
         <hr>
         <%= render @post.comments %>

@@ -27,7 +27,12 @@
           </div>
                   
           <div class="panel-body">
-            <%= post.content %>
+            <% if post.content.length > 175 %>
+              <%= truncate(post.content, length: 175) %> 
+              <%= link_to 'Read More', post %>
+            <% else %>
+              <%= post.content %>
+            <% end %>
           </div>
         </div>
       <% end %>
