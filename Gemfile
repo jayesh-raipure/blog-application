@@ -64,6 +64,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'letter_opener'
   gem 'rspec-rails', '~> 3.6'
+  gem 'factory_girl_rails'
 end
 
 group :production do
