@@ -39,15 +39,7 @@
         <div class="panel-body">
           <p><%= @post.content %></p>
           <div id="fb-root"></div>
-          <script>
-            (function(d, s, id) {
-              var js, fjs = d.getElementsByTagName(s)[0];
-              if (d.getElementById(id)) return;
-              js = d.createElement(s); js.id = id;
-              js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=<%= ENV['FACEBOOK_APPID'] %>";
-              fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
-          </script>
+          <%= javascript_include_tag 'fb_like_and_share_button' %>
           <div class="fb-like" data-href="<%= post_url @post.id %>" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
         </div>
       </div>
