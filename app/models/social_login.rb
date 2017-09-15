@@ -11,7 +11,6 @@ class SocialLogin < ActiveRecord::Base
   end
 
   def self.create_user_from_omniauth(auth)
-    Rails.logger.debug "Jayesh #{auth.inspect}"
     user = SocialLogin.new(
       provider: auth.provider, 
       uid: auth.uid,

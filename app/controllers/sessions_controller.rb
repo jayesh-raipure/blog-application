@@ -21,9 +21,7 @@ class SessionsController < ApplicationController
 
   def omniauthLogin
     auth = request.env["omniauth.auth"]
-    # session[:omniauth] = auth.except('extra')
     @user = SocialLogin.from_omniauth(auth)
-    # sign_in_and_redirect @user
     session[:uid] = @user.uid
     session[:id] = @user.id
     session[:image] = @user.image || "/images/thumb/missing.png"
