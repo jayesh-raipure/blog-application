@@ -15,9 +15,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:user_id] = nil
-    session[:uid] = nil
-    session[:id] = nil
+    session.clear
     redirect_to new_user_session_url, notice: "Logged out"
   end
 
@@ -28,6 +26,8 @@ class SessionsController < ApplicationController
     # sign_in_and_redirect @user
     session[:uid] = @user.uid
     session[:id] = @user.id
+    session[:image] = @user.image || "/images/thumb/missing.png"
+    session[:name] = @user.firstname
     redirect_to ((request.env['omniauth.origin'] != new_user_session_url) ? request.env['omniauth.origin'] : posts_url)
   end
   

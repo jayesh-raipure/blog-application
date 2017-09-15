@@ -56,6 +56,7 @@ gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
 
 gem 'devise'
+gem 'paperclip', '~> 5.1'
 
 # gem 'letter_opener', :group => :development
 

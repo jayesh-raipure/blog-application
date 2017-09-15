@@ -55,8 +55,18 @@
           <p><%= link_to "All Blog", posts_url %></p>
         <% end %>
       </div>
-      <div class="col-md-10 col-sm-10 col-lg-10 text-left"> 
+      <div class="col-md-8 col-sm-8 col-lg-8 text-left"> 
         <%= yield %>
+      </div>
+      <div class="col-sm-2 sidenav">
+        <div class="well">
+          <% if user_signed_in? || session[:uid]  %>
+            <p>Hi, <%= session[:name] ||  "#{current_user.firstname} #{current_user.lastname}"%></p>
+            <%= image_tag(current_user&.image&.url(:thumb) || session[:image], size: "100")%>
+          <% else %>
+            <p>WelCome to BlogApp</p>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
